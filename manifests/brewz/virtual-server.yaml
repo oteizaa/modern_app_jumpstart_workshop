@@ -14,11 +14,11 @@ spec:
       port: 8000
   routes:
     - path: /
-      policies:
-      - name: rate-limit-policy
       action:
         pass: spa
     - path: /api
+      policies:
+      - name: rate-limit-policy    
       action:
         pass: api
     - path: /images
