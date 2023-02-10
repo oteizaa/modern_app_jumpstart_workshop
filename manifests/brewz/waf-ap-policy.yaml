@@ -9,7 +9,7 @@ spec:
     template:
       name: POLICY_TEMPLATE_NGINX_BASE
     applicationLanguage: utf-8
-    enforcementMode: transparent
+    enforcementMode: blocking
     bot-defense:
       settings:
         isEnabled: false
