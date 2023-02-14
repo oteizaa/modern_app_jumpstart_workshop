@@ -33,12 +33,12 @@ spec:
       port: 80      
   routes:
     - path: /
-      # matches:
-      #   - conditions:
-      #     - cookie: "app_version"
-      #       value: "dark"
-      #     action:
-      #       pass: spa-dark
+      matches:
+        - conditions:
+          - cookie: "app_version"
+            value: "dark"
+          action:
+            pass: spa-dark
       action:
         pass: spa
     - path: /api
