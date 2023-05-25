@@ -10,4 +10,4 @@ spec:
     securityLog:
       enable: true
       apLogConf: "default/logconf"
-      logDest: "https://quickstart-es-http.monitoring.svc.cluster.local:9200"
+      logDest: "https://nginx-service.monitoring.svc.cluster.local:9200"
