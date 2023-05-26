@@ -10,4 +10,4 @@ spec:
     securityLog:
       enable: true
       apLogConf: "default/logconf"
-      logDest: "syslog:server=logstash.default.svc.cluster.local:5044"
+      logDest: "syslog:server=logstash.monitoring.svc.cluster.local:5044"
