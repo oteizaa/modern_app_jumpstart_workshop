@@ -44,8 +44,29 @@ spec:
     - path: /api
       policies:
         - name: rate-limit-policy
+        - name: jwt-policy
       action:
-        pass: api
+        # pass: api
+        proxy:
+          upstream: checkout
+          rewritePath: /api/order
+          requestHeaders:
+            set:
+              - name: User
+                value: ${jwt_claim_name}
+              - name: Email
+                value: ${jwt_claim_email}
+      errorPages:
+        - codes: [401]
+          return:
+            code: 401
+            type: application/json
+            body: |
+              {\"msg\": \"Authorization Required\"}
+            headers:
+              - name: x-debug-original-status
+                value: ${upstream_status}                
+      # ---- manejo de errores de respuestas 404 ---
       # errorPages:
       #   - codes: [404]
       #     return:
