@@ -47,7 +47,7 @@ spec:
         - name: jwt-policy
       action:
         # pass: api
-        proxy:
+        pass:
           upstream: api
           rewritePath: /api
           requestHeaders:
