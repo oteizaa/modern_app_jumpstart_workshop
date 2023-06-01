@@ -48,8 +48,8 @@ spec:
       action:
         # pass: api
         proxy:
-          upstream: checkout
-          rewritePath: /api/order
+          upstream: api
+          rewritePath: /api
           requestHeaders:
             set:
               - name: User
