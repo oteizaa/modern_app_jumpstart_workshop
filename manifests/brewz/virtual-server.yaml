@@ -58,17 +58,12 @@ spec:
       #         - name: x-debug-original-status
       #           value: ${upstream_status}        
     - path: /api/inventory
+      policies:
+        - name: jwt-policy        
       action:
         proxy:
           upstream: inventory
           rewritePath: /api/inventory
-    - path: /api/recommendations
-      policies:
-        - name: jwt-policy    
-      action:
-        proxy:
-          upstream: recommendations
-          rewritePath: /api/recommendations
           requestHeaders:
             set:
               - name: User
@@ -90,3 +85,8 @@ spec:
         proxy:
           upstream: api
           rewritePath: /images
+    - path: /api/recommendations
+      action:
+        proxy:
+          upstream: recommendations
+          rewritePath: /api/recommendations
