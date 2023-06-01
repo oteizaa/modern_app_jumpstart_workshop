@@ -69,7 +69,7 @@ spec:
         proxy:
           upstream: recommendations
           rewritePath: /api/recommendations
-            requestHeaders:
+          requestHeaders:
             set:
               - name: User
                 value: ${jwt_claim_name}
