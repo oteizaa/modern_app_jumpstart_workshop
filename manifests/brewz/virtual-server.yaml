@@ -47,9 +47,7 @@ spec:
         - name: jwt-policy
       action:
         # pass: api
-        pass:
-          upstream: api
-          rewritePath: /api
+        pass: api
           requestHeaders:
             set:
               - name: User
