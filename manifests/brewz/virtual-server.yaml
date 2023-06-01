@@ -63,10 +63,28 @@ spec:
           upstream: inventory
           rewritePath: /api/inventory
     - path: /api/recommendations
+      policies:
+        - name: jwt-policy    
       action:
         proxy:
           upstream: recommendations
           rewritePath: /api/recommendations
+            requestHeaders:
+            set:
+              - name: User
+                value: ${jwt_claim_name}
+              - name: Email
+                value: ${jwt_claim_email}
+      errorPages:
+        - codes: [401]
+          return:
+            code: 401
+            type: application/json
+            body: |
+              {\"msg\": \"Authorization Required\"}
+            headers:
+              - name: x-debug-original-status
+                value: ${upstream_status}        
     - path: /images
       action:
         proxy:
