@@ -6,3 +6,4 @@ spec:
   jwt:
     realm: BrewzAPI
     secret: jwk-secret
+    token: $http_token
