@@ -57,8 +57,8 @@ spec:
               - name: x-debug-original-status
                 value: ${upstream_status}        
     - path: /api/inventory
-      policies:
-        - name: jwt-policy        
+      # policies:
+      #   - name: jwt-policy        
       action:
         proxy:
           upstream: inventory
