@@ -43,6 +43,7 @@ spec:
       policies:
         - name: waf-policy
         - name: rate-limit-policy
+        - name: jwt-policy          
       action:
         pass: api            
       # ---- manejo de errores de respuestas 404 ---
