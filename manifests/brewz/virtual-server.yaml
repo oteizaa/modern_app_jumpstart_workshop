@@ -7,8 +7,6 @@ spec:
   host: brewz.f5demo.com
   tls:
     secret: brewz-tls
-  policies:
-    - name: waf-policy
   upstreams:
     - name: spa
       service: spa
@@ -43,6 +41,7 @@ spec:
         pass: spa
     - path: /api
       policies:
+        - name: waf-policy
         - name: rate-limit-policy
       action:
         pass: api            
