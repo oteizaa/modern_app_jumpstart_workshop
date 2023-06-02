@@ -64,12 +64,12 @@ spec:
         proxy:
           upstream: inventory
           rewritePath: /api/inventory
-          # requestHeaders:
-          #   set:
-          #     - name: alg
-          #       value: ${jwt_claim_name}
-          #     - name: typ
-          #       value: ${jwt_claim_email}
+          requestHeaders:
+            set:
+              - name: User
+                value: ${jwt_claim_name}
+              - name: Email
+                value: ${jwt_claim_email}
       errorPages:
         - codes: [401]
           return:
