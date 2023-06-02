@@ -47,23 +47,16 @@ spec:
       action:
         pass: api            
       # ---- manejo de errores de respuestas 404 ---
-      errorPages:
-        - codes: [404]
-          return:
-            code: 404
-            type: application/json
-            body: |
-              {\"msg\": \"Not allowed!\"}
-            headers:
-              - name: x-debug-original-status
-                value: ${upstream_status}        
-    - path: /api/inventory
-      # policies:
-      #   - name: jwt-policy        
-      action:
-        proxy:
-          upstream: inventory
-          rewritePath: /api/inventory
+      # errorPages:
+      #   - codes: [404]
+      #     return:
+      #       code: 404
+      #       type: application/json
+      #       body: |
+      #         {\"msg\": \"Not allowed!\"}
+      #       headers:
+      #         - name: x-debug-original-status
+      #           value: ${upstream_status}        
       errorPages:
         - codes: [401]
           return:
@@ -73,7 +66,14 @@ spec:
               {\"msg\": \"Authorization Required\"}
             headers:
               - name: x-debug-original-status
-                value: ${upstream_status}        
+                value: ${upstream_status}  
+    - path: /api/inventory
+      # policies:
+      #   - name: jwt-policy        
+      action:
+        proxy:
+          upstream: inventory
+          rewritePath: /api/inventory      
     - path: /images
       action:
         proxy:
