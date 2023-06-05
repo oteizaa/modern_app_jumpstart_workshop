@@ -47,17 +47,17 @@ spec:
       action:
         pass: api            
       # ---- manejo de errores de respuestas 404 ---
-      # errorPages:
-      #   - codes: [404]
-      #     return:
-      #       code: 404
-      #       type: application/json
-      #       body: |
-      #         {\"msg\": \"Not allowed!\"}
-      #       headers:
-      #         - name: x-debug-original-status
-      #           value: ${upstream_status}        
       errorPages:
+        - codes: [404]
+          return:
+            code: 404
+            type: application/json
+            body: |
+              {\"msg\": \"Not allowed!\"}
+            headers:
+              - name: x-debug-original-status
+                value: ${upstream_status}        
+      # errorPages:
         - codes: [401]
           return:
             code: 401
