@@ -46,7 +46,7 @@ spec:
         - name: waf-policy
       action:
         pass: api            
-      # ---- manejo de errores de respuestas 404 ---
+      # ---- manejo de errores de respuestas 40x ---
       errorPages:
         - codes: [404]
           return:
