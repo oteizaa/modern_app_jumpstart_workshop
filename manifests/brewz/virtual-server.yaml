@@ -41,9 +41,9 @@ spec:
         pass: spa
     - path: /api
       policies:
+        - name: jwt-policy  
+        - name: rate-limit-policy 
         - name: waf-policy
-        - name: rate-limit-policy
-        - name: jwt-policy          
       action:
         pass: api            
       # ---- manejo de errores de respuestas 404 ---
