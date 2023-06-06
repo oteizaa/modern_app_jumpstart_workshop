@@ -40,36 +40,35 @@ spec:
       action:
         pass: spa
     - path: /api
-      policies:
-        - name: jwt-policy  
-        - name: rate-limit-policy 
-        - name: waf-policy
+      # policies:
+      #   - name: jwt-policy  
+      #   - name: rate-limit-policy 
+      #   - name: waf-policy
       action:
         pass: api            
       # ---- manejo de errores de respuestas 40x ---
-      errorPages:
-        - codes: [404]
-          return:
-            code: 404
-            type: application/json
-            body: |
-              {\"msg\": \"Not allowed!\"}
-            headers:
-              - name: x-debug-original-status
-                value: ${upstream_status}        
+      #circuit breaker 404
       # errorPages:
-        - codes: [401]
-          return:
-            code: 401
-            type: application/json
-            body: |
-              {\"msg\": \"Authorization Required\"}
-            headers:
-              - name: x-debug-original-status
-                value: ${upstream_status}  
-    - path: /api/inventory
-      # policies:
-      #   - name: jwt-policy        
+      #   - codes: [404]
+      #     return:
+      #       code: 404
+      #       type: application/json
+      #       body: |
+      #         {\"msg\": \"Not allowed!\"}
+      #       headers:
+      #         - name: x-debug-original-status
+      #           value: ${upstream_status}        
+      # errorPages: 401
+        # - codes: [401]
+        #   return:
+        #     code: 401
+        #     type: application/json
+        #     body: |
+        #       {\"msg\": \"Authorization Required\"}
+        #     headers:
+        #       - name: x-debug-original-status
+        #         value: ${upstream_status}  
+    - path: /api/inventory     
       action:
         proxy:
           upstream: inventory
