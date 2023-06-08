@@ -41,7 +41,7 @@ spec:
         pass: spa
     - path: /api
       policies:
-        - name: jwt-policy  
+        # - name: jwt-policy  
         - name: rate-limit-policy 
         - name: waf-policy
       action:
