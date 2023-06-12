@@ -42,7 +42,7 @@ spec:
     - path: /api
       policies:
         # - name: jwt-policy  
-        # - name: rate-limit-policy 
+        - name: rate-limit-policy 
         # - name: waf-policy
       action:
         pass: api            
