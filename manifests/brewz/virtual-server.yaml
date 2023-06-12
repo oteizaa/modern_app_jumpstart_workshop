@@ -46,8 +46,8 @@ spec:
         - name: waf-policy
       action:
         pass: api            
-      # ---- manejo de errores de respuestas 40x ---
-      #circuit breaker 404
+      ## ---- manejo de errores de respuestas 40x ---
+      ## circuit breaker 404
       errorPages:
         - codes: [404]
           return:
@@ -58,7 +58,7 @@ spec:
             headers:
               - name: x-debug-original-status
                 value: ${upstream_status}        
-      errorPages: 401
+      ## errorPages: 401
         - codes: [401]
           return:
             code: 401
