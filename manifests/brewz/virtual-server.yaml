@@ -48,16 +48,16 @@ spec:
         pass: api            
       ## ---- manejo de errores de respuestas 40x ---
       ## circuit breaker 404
-      # errorPages:
-      #   - codes: [404]
-      #     return:
-      #       code: 404
-      #       type: application/json
-      #       body: |
-      #         {\"msg\": \"Not allowed!\"}
-      #       headers:
-      #         - name: x-debug-original-status
-      #           value: ${upstream_status}        
+      errorPages:
+        - codes: [404]
+          return:
+            code: 404
+            type: application/json
+            body: |
+              {\"msg\": \"Not allowed!\"}
+            headers:
+              - name: x-debug-original-status
+                value: ${upstream_status}        
       # errorPages: 401
         # - codes: [401]
         #   return:
