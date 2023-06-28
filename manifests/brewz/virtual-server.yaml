@@ -34,6 +34,7 @@ spec:
       policies:
         - name: rate-limit-policy
         - name: waf-policy
+        - name: jwt-policy        
       action:
         pass: api
       ## circuit breaker 404
@@ -46,7 +47,17 @@ spec:
               {\"msg\": \"Not allowed!\"}
             headers:
               - name: x-debug-original-status
-                value: ${upstream_status}                 
+                value: ${upstream_status}
+      #errorPages: 401
+        - codes: [401]
+          return:
+            code: 401
+            type: application/json
+            body: |
+              {\"msg\": \"Authorization Required\"}
+            headers:
+              - name: x-debug-original-status
+                value: ${upstream_status}                   
     - path: /api/inventory     
       action:
         proxy:
