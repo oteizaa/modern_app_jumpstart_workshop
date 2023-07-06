@@ -42,7 +42,8 @@ spec:
     - path: /api
       policies:
         - name: rate-limit-policy
-        - name: waf-policy        
+        - name: waf-policy
+        - name: jwt-policy                 
       action:
         pass: api
       errorPages:
