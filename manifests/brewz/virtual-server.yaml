@@ -42,6 +42,7 @@ spec:
     - path: /api
       policies:
         - name: rate-limit-policy
+        - name: waf-policy        
       action:
         pass: api
       errorPages:
