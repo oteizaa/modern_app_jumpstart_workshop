@@ -43,7 +43,7 @@ spec:
       policies:
         - name: rate-limit-policy
         - name: waf-policy
-        - name: jwt-policy                 
+#        - name: jwt-policy                 
       action:
         pass: api
       errorPages:
