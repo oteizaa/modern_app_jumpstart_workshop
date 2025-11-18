@@ -5,6 +5,8 @@ metadata:
   name: brewz
 spec:
   host: brewz.f5demo.com
+  tls:
+    secret: brewz-tls
   upstreams:
     - name: spa
       service: spa
@@ -42,6 +44,16 @@ spec:
         - name: rate-limit-policy
       action:
         pass: api
+      errorPages:
+        - codes: [404]
+          return:
+            code: 404
+            type: application/json
+            body: |
+              {\"msg\": \"Could not find the resource!\"}
+            headers:
+              - name: x-debug-original-status
+                value: ${upstream_status}
     - path: /api/inventory
       action:
         proxy:
