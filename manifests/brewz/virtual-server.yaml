@@ -7,8 +7,8 @@ spec:
   host: brewz.f5demo.com
   tls:
     secret: brewz-tls
-  policies:
-    - name: waf-policy    
+  # policies:
+  #   - name: waf-policy    
   upstreams:
     - name: spa
       service: spa
@@ -36,30 +36,30 @@ spec:
       port: 8001      
   routes:
     - path: /
-      matches:
-        - conditions:
-          - cookie: "app_version"
-            value: "dark"
-          action:
-            pass: spa-dark
+      # matches:
+      #   - conditions:
+      #     - cookie: "app_version"
+      #       value: "dark"
+      #     action:
+      #       pass: spa-dark
       action:
         pass: spa
     - path: /api
-      policies:
-        - name: rate-limit-policy
-        - name: jwt-policy
+      # policies:
+      #   - name: rate-limit-policy
+      #   - name: jwt-policy
       action:
         pass: api
-      errorPages:
-        - codes: [404]
-          return:
-            code: 404
-            type: application/json
-            body: |
-              {\"msg\": \"Could not find the resource!\"}
-            headers:
-              - name: x-debug-original-status
-                value: ${upstream_status}
+      # errorPages:
+      #   - codes: [404]
+      #     return:
+      #       code: 404
+      #       type: application/json
+      #       body: |
+      #         {\"msg\": \"Could not find the resource!\"}
+      #       headers:
+      #         - name: x-debug-original-status
+      #           value: ${upstream_status}
     - path: /api/inventory
       action:
         proxy:
