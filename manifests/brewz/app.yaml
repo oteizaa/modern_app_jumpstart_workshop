@@ -55,7 +55,7 @@ spec:
     spec:
       containers:
         - name: api
-          image: ghcr.io/f5devcentral/spa-demo-app-api:sha-ec8dec7
+          image: ghcr.io/f5devcentral/spa-demo-app-api:sha-033b779
           ports:
             - containerPort: 8000
           env:
@@ -97,9 +97,9 @@ spec:
     spec:
       containers:
         - name: spa
-          image: ghcr.io/f5devcentral/spa-demo-app-spa:sha-ec8dec7
+          image: ghcr.io/f5devcentral/spa-demo-app-spa:sha-033b779
           ports:
-            - containerPort: 8080
+            - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
@@ -107,8 +107,8 @@ metadata:
   name: spa
 spec:
   ports:
-    - port: 8080
-      targetPort: 8080
+    - port: 80
+      targetPort: 80
       protocol: TCP
       name: http
   selector:
@@ -131,7 +131,7 @@ spec:
     spec:
       containers:
         - name: recommendations
-          image: ghcr.io/f5devcentral/spa-demo-app-recommendations:sha-ec8dec7
+          image: ghcr.io/f5devcentral/spa-demo-app-recommendations:sha-033b779
           ports:
             - containerPort: 8001
 ---
@@ -154,7 +154,7 @@ kind: Deployment
 metadata:
   name: inventory
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: inventory
@@ -165,7 +165,7 @@ spec:
     spec:
       containers:
         - name: inventory
-          image: ghcr.io/f5devcentral/spa-demo-app-inventory:sha-ec8dec7
+          image: ghcr.io/f5devcentral/spa-demo-app-inventory:sha-033b779
           ports:
             - containerPort: 8002
 ---
