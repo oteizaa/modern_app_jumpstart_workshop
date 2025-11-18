@@ -68,7 +68,7 @@ spec:
       #         {\"msg\": \"Authorization Required\"}
       #       headers:
       #         - name: x-debug-original-status
-      #           value: ${upstream_status}          
+      #           value: ${upstream_status}
     - path: /api/inventory
       action:
         proxy:
